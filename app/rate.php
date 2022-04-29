@@ -8,5 +8,6 @@ class rate extends Model
 {
 
     protected $table = 'rates';
-    protected $fillable = ['id', 'user_id', 'service_id', 'rate', 'created_at', 'updated_at'];
+    protected $fillable = ['id', 'user_id', 'service_id', 'rate'];
+
 }

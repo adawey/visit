@@ -8,5 +8,7 @@ class service extends Model
 {
     protected $table = 'services';
 
-    protected $fillable = ['id', 'name',  'link', 'description', 'image', 'created_at', 'updated_at', 'region_id', 'area_id'];
+    protected $fillable = ['id', 'name',  'link', 'description', 'image', 'created_at', 'updated_at', 'region_id'];
+
+    protected $hidden = ['created_at', 'updated_at'];
 }

@@ -37,7 +37,6 @@ Route::group(['prefix' => 'admin'], function () {
     Route::any('login', [adminController::class, 'login'])->name('adminlogin');
     Route::group(['middleware' => 'admin'], function () {
         Route::get('/', [adminController::class, 'index'])->name('start');
-
         Route::any('logout', [adminController::class, 'logout']);
         Route::group(['prefix' => 'services'], function () {
             Route::get('create', [adminController::class, 'create'])->name('create_serve');
