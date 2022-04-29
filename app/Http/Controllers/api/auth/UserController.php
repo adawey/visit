@@ -24,7 +24,8 @@ class UserController extends Controller
             ]);
         }
         $token = 'Bearer '  . $user->createToken($request->email)->plainTextToken;
-        return $token . $user;
+        response()->json(['token' => $token, 'data' => $user, 'status' => 'ok']);
+
     }
 
     public function Logout(Request $request)
