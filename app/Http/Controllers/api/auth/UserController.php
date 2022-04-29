@@ -24,7 +24,6 @@ class UserController extends Controller
             ]);
         }
         $token = 'Bearer '  . $user->createToken($request->email)->plainTextToken;
-
         return response()->json(['token' => $token, 'data' => $user, 'status' => 'ok'], 200);
 
     }
@@ -35,6 +34,6 @@ class UserController extends Controller
         $AuthorizationUser = Auth::guard('sanctum')->user();
         $user =  User::find($AuthorizationUser->id);
         $user->tokens()->delete();
-        return 'logout done';
+        return response()->json(['msg' => 'logout done', 'status' => 'ok'], 200);
     }
 }
