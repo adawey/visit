@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Comment;
 use Illuminate\Database\Eloquent\Model;
 
 class service extends Model
@@ -17,5 +18,10 @@ class service extends Model
     public function region()
     {
         return $this->belongsTo(regions_lite::class, 'region_id', 'id');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'service_id');
     }
 }

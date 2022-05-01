@@ -3,6 +3,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\api\CommentController;
 use App\Http\Controllers\api\RegisterController;
 use App\Http\Controllers\api\SendCodeController;
 use App\Http\Controllers\api\ServicesController;
@@ -41,6 +42,7 @@ Route::group(['prefix' => 'services'], function () {
     Route::post('/test', [ServicesController::class, 'test']);
     Route::get('/{id}', [ServicesController::class, 'getServicesById']);
     Route::post('/search', [ServicesController::class, 'searching']);
+
 });
 
 Route::middleware(['auth:sanctum'])->group(function () {
@@ -49,5 +51,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
     });
     Route::group(['prefix' => 'complaints'], function () {
         Route::post('/create', [ComplaintsController::class, 'store']);
+    });
+    Route::group(['prefix' => 'comment'], function () {
+        Route::post('/create', [CommentController::class, 'store']);
     });
 });
