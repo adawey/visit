@@ -38,6 +38,7 @@ Route::group(['prefix' => 'users'], function () {
 });
 Route::group(['prefix' => 'services'], function () {
     Route::get('/', [ServicesController::class, 'getServices']);
+    Route::post('/test', [ServicesController::class, 'test']);
     Route::get('/{id}', [ServicesController::class, 'getServicesById']);
     Route::post('/search', [ServicesController::class, 'searching']);
 });

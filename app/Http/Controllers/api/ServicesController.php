@@ -31,9 +31,11 @@ class ServicesController extends Controller
         $service = service::select('id', 'name', 'description', 'link', 'image', 'region_id')->find($id);
         if ($service) {
             $service->image = url('/') . '/images/offer/' . $service->image;
-            $rates = Avg::where('service_id', $id)->get();
-            $region = DB::table('regions_lite')->where('id', $service->region_id)->get();
-            return response()->json(['service' => $service, 'regions' => $region, 'rates' => $rates, 'status' => 'ok', 'msg' => 'service found'], 200);
+            $rates = Avg::where('service_id', $service->id)->first();
+            $region = DB::table('regions_lite')->where('id', $service->region_id)->first();
+            $service->location = $region->name_ar;
+            $service->rate = $rates;
+            return response()->json(['service' => $service, 'status' => 'ok', 'msg' => 'service found'], 200);
         } else {
             return response()->json(['msg' => 'service not found', 'status' => 'ok'], 200);
         }
@@ -47,6 +49,25 @@ class ServicesController extends Controller
             $region = regions_lite::where('id', $service->region_id)->first();
             $rates = Avg::where('service_id', $service->id)->first();
             return response()->json(['services' => $service, 'region' => $region, 'rates' => $rates,  'status' => 'ok', 'msg' => 'service found'], 200);
+        } else {
+            return response()->json(['msg' => 'service not found', 'status' => 'ok'], 200);
+        }
+    }
+
+    public function test(Request $request)
+    {
+        $service = service::where('name', 'like', '%' . $request->name . '%')->first();
+        // $region = service::with('region')->find($service->id);
+
+        // return response()->json($region);
+        // $service = service::select('id', 'name', 'description', 'link', 'image', 'region_id')->find($id);
+        if ($service) {
+            $service->image = url('/') . '/images/offer/' . $service->image;
+            $rates = Avg::where('service_id', $service->id)->first();
+            $region = DB::table('regions_lite')->where('id', $service->region_id)->first();
+            $service->location = $region->name_ar;
+            $service->rate = $rates;
+            return response()->json(['service' => $service, 'regions' => $region, 'rates' => $rates, 'status' => 'ok', 'msg' => 'service found'], 200);
         } else {
             return response()->json(['msg' => 'service not found', 'status' => 'ok'], 200);
         }

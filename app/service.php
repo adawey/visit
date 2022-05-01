@@ -11,4 +11,11 @@ class service extends Model
     protected $fillable = ['id', 'name',  'link', 'description', 'image', 'created_at', 'updated_at', 'region_id'];
 
     protected $hidden = ['created_at', 'updated_at'];
+
+
+
+    public function region()
+    {
+        return $this->belongsTo(regions_lite::class, 'region_id', 'id');
+    }
 }

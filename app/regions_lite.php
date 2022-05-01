@@ -11,4 +11,11 @@ class regions_lite extends Model
     protected $fillable = ['id', 'code', 'name_ar'];
     protected $hidden = ['created_at', 'updated_at'];
 
+
+
+    public function Services()
+    {
+        return $this->hasMany(service::class, 'region_id', 'id');
+    }
+
 }
