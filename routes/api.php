@@ -7,6 +7,7 @@ use App\Http\Controllers\api\RegisterController;
 use App\Http\Controllers\api\SendCodeController;
 use App\Http\Controllers\api\ServicesController;
 use App\Http\Controllers\api\auth\UserController;
+use App\Http\Controllers\api\SugistionController;
 
 
 
@@ -38,4 +39,10 @@ Route::group(['prefix' => 'services'], function () {
     Route::get('/', [ServicesController::class, 'getServices']);
     Route::get('/{id}', [ServicesController::class, 'getServicesById']);
     Route::post('/search', [ServicesController::class, 'searching']);
+});
+
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::group(['prefix' => 'suggest'], function () {
+        Route::post('/create', [SugistionController::class, 'store']);
+    });
 });

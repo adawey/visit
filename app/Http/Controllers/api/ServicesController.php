@@ -50,6 +50,9 @@ class ServicesController extends Controller
         } else {
             return response()->json(['msg' => 'service not found', 'status' => 'ok'], 200);
         }
-
     }
+
+
+
+
 }
