@@ -32,6 +32,8 @@ class ServicesController extends Controller
         if ($service) {
             $service->image = url('/') . '/images/offer/' . $service->image;
             $rates = Avg::where('service_id', $service->id)->first();
+            $rates->ratesum = (int)$rates->ratesum;
+            $rates->avg = floatval($rates->avg);
             $region = DB::table('regions_lite')->where('id', $service->region_id)->first();
             $service->location = $region->name_ar;
             $service->rate = $rates;
