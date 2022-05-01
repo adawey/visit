@@ -9,10 +9,10 @@
           <h1>تعديل خدمة</h1>
         </div>
         <div class="col-sm-6">
-          <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
+          {{-- <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="">Home</a></li>
             <li class="breadcrumb-item active">edit service</li>
-          </ol>
+          </ol> --}}
         </div>
       </div>
     </div><!-- /.container-fluid -->
@@ -46,9 +46,9 @@
                         <label class="form-label"> اختر منطقة </label>
                         <select name="region_id" id="regions" class="form-control input-lg dynamic"
                             data-dependent="area">
-                            <option "">اختار منطقة </option>
+                            <option >اختار منطقة </option>
                             @foreach ($regions as $region)
-                                <option value="{{ $region->id }}"> {{ $region->name_ar }}</option>
+                                <option @if($region->id == $serve->region_id) selected @endif value="{{$region->id }}"> {{ $region->name_ar }}</option>
                             @endforeach
                         </select>
                         @error('region_id')
@@ -82,7 +82,7 @@
                 </div>
               <!-- /.card-body -->
               <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">تعديل</button>
               </div>
             </form>
           </div>

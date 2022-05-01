@@ -9,8 +9,8 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Validation</li>
+                        {{-- <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Validation</li> --}}
                     </ol>
                 </div>
             </div>
@@ -83,7 +83,7 @@
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">أنشاء</button>
+                                <button type="submit" class="btn btn-primary">حفظ</button>
                             </div>
                         </form>
                     </div>
