@@ -8,6 +8,7 @@ use App\Http\Controllers\api\SendCodeController;
 use App\Http\Controllers\api\ServicesController;
 use App\Http\Controllers\api\auth\UserController;
 use App\Http\Controllers\api\SugistionController;
+use App\Http\Controllers\api\ComplaintsController;
 
 
 
@@ -44,5 +45,8 @@ Route::group(['prefix' => 'services'], function () {
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::group(['prefix' => 'suggest'], function () {
         Route::post('/create', [SugistionController::class, 'store']);
+    });
+    Route::group(['prefix' => 'complaints'], function () {
+        Route::post('/create', [ComplaintsController::class, 'store']);
     });
 });
