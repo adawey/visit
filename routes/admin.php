@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AreaController;
 use App\Http\Controllers\adminController;
+use App\Http\Controllers\ServiceController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +30,7 @@ Route::get('/adawe', function () {
     return view('admin2.layout');
 });
 Route::get('/adawe2', function () {
-    return view('admin1.service.create');
+    return view('admin1.service.singlepage');
 });
 
 
@@ -44,6 +46,7 @@ Route::group(['prefix' => 'admin'], function () {
             Route::get('edit/{id}', [adminController::class, 'edit'])->name('edit_serve');
             Route::patch('update/{id}', [adminController::class, 'update'])->name('update_serve');
             Route::delete('store/destroy/{id}', [adminController::class, 'destroy'])->name('destroy_serve');
+            Route::get('/service/{id}', [ServiceController::class, 'getservocebyid'])->name('serviceId');
         });
     });
 });

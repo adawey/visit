@@ -11,8 +11,6 @@ use Illuminate\Support\Facades\Auth;
 class SugistionController extends Controller
 {
 
-
-
     public function store(Request $request)
     {
         $token = $request->header('Authorization');

@@ -31,6 +31,7 @@
                                     <th>الصورة</th>
                                     <th>مسح</th>
                                     <th>تعديل</th>
+                                    <th>عرض</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -59,9 +60,11 @@
                                                 </td>
                                                 <td>
                                                     <form method="get" action="{{route('edit_serve',$service->id)}}" enctype="multipart/form-data">
-
                                                         <button type="submit" class="btn btn-success">تعديل</button>
                                                     </form>
+                                                </td>
+                                                <td>
+                                                    <a calss='btn btn-primary' href="{{ route('serviceId',$service->id)}}" > عرض </a>
                                                 </td>
 
                                             </tr>

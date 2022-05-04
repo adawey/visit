@@ -98,7 +98,7 @@
                 <div class="menu-container flex-grow-1">
                     <ul id="menu" class="menu">
                         <li>
-                            <a href="#dashboards">
+                            <a href="{{url('/admin')}}">
                                 <i data-acorn-icon="home-garage" class="icon" data-acorn-size="18"></i>
                                 <span class="label">الرئيسية</span>
                             </a>

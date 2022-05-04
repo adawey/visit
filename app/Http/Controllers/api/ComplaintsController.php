@@ -29,5 +29,6 @@ class ComplaintsController extends Controller
         }
 
         return response()->json(['msg' => $msg, 'status' => 'ok']);
+
     }
 }

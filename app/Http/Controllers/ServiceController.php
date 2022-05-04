@@ -12,4 +12,11 @@ class ServiceController extends Controller
         $offers = service::all();
         return view('admin.offer', compact('offers'));
     }
+    public function getservocebyid($id)
+    {
+        $service = service::find($id);
+
+
+        return view('admin1.service.singlepage', compact('service'));
+    }
 }

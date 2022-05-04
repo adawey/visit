@@ -35,7 +35,7 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="name">الإسم</label>
-                                    <input type="text" name="name" onchange='regfun()'  class="form-control" id="name"
+                                    <input type="text" name="name" onchange='regfun()' value='{{old('name')}}'  class="form-control" id="name"
                                         placeholder="أدخل الاسم">
                                     <div id='demo' style='display:none' class="alert alert-danger mt-3"> </div>
 
@@ -59,14 +59,14 @@
 
                                 <div class="form-group">
                                     <label for="link">الرابط</label>
-                                    <input type="text" name="link" class="form-control" id="link">
+                                    <input type="text" name="link" class="form-control" id="link" value='{{old('link')}}'>
                                     @error('link')
                                         <div class="alert alert-danger mt-3">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="description">الوصف</label>
-                                    <textarea id="description" name="description" class="form-control"></textarea>
+                                    <textarea id="description" name="description" class="form-control">{{old('description')}}</textarea>
                                     @error('description')
                                         <div class="alert alert-danger mt-3">{{ $message }}</div>
                                     @enderror
