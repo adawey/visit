@@ -23,6 +23,7 @@ class CommentController extends Controller
         $comment = Comment::create([
             'comment' => $request->comment,
             'user_id' =>  $user->id,
+            'user_name' =>  $user->name,
             'service_id' =>  $request->service_id,
         ]);
         if ($comment) {

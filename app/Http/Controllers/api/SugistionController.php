@@ -19,7 +19,8 @@ class SugistionController extends Controller
         $user =  User::find($AuthorizationUser->id);
         $suggest = Suggestion::create([
             'suggest' => $request->suggest,
-            'user_id' =>  $user->id
+            'user_id' =>  $user->id,
+            'user_name' =>  $user->name
         ]);
         if ($suggest) {
             $msg = 'تم تسجيل مقترحك شكرا لثقتك ';

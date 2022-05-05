@@ -8,7 +8,7 @@ class Comment extends Model
 {
     protected $table = 'comments';
 
-    protected $fillable = ['id', 'comment', 'service_id', 'user_id', 'created_at', 'updated_at'];
+    protected $fillable = ['id', 'comment', 'service_id', 'user_id', 'created_at', 'updated_at', 'user_name'];
 
 
 

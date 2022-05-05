@@ -26,12 +26,12 @@
                                 <tr>
                                     <th>الإسم</th>
                                     <th>المنطقة</th>
-                                    <th>الوصف</th>
+                                    {{-- <th>الوصف</th> --}}
                                     <th>الرابط</th>
-                                    <th>الصورة</th>
+                                    {{-- <th>الصورة</th> --}}
                                     <th>مسح</th>
                                     <th>تعديل</th>
-                                    <th>عرض</th>
+                                    <th>تفاصيل</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -46,11 +46,11 @@
                                                 @endforeach</td>
 
 
-                                                <td>{{$service->description}}</td>
+                                                {{-- <td>{{$service->description}}</td> --}}
                                                 <td><a href="{{$service->link}}">{{$service->link}}</a></td>
-                                                <td>
+                                                {{-- <td>
                                                     <img height="100px" width="100px" src="{{$service->image?url('/').'/images/offer/'.$service->image :'https://via.placeholder.com/100'}}" alt="" class="img-responsive img-rounded"></td>
-
+                                                                --}}
                                                 <td>
                                                     <form method="post" action="{{route('destroy_serve', $service->id)}}" enctype="multipart/form-data">
                                                         @csrf

@@ -10,10 +10,10 @@
             <div class="sw-13 position-relative mb-3 mx-auto">
               <img src="{{$service->image?url('/').'/images/offer/'.$service->image :'https://via.placeholder.com/100'}}" class="img-fluid rounded-xl" alt="thumb" />
             </div>
-            <a href="Instructor.Detail.html" class="body-link">ألاسم:{{$service->name}}</a>
+            <a href="Instructor.Detail.html" class="body-link">{{$service->name}}</a>
             <div class="mb-2">
                 <div class="br-wrapper br-theme-cs-icon d-inline-block">
-                  <select class="rating" name="rating" autocomplete="off" data-readonly="true" data-initial-rating="5">
+                  <select class="rating" name="rating" autocomplete="off" data-readonly="true" data-initial-rating=" @if($rates !== 0){{$rates->avg}}@else 0 @endif ">
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -23,7 +23,7 @@
                 </div>
             </div>
 
-            <div class="mb-3 text-muted sh-7">الوصف:{{$service->description}}</div>
+            <div class="mb-3 text-muted sh-7">{{$service->description}}</div>
 
           </div>
         </div>
@@ -46,27 +46,18 @@
 
       <!-- Content Start -->
       <div class="row g-5">
+        @foreach ($comments as $comment )
         <!-- Right Side Start -->
         <div class="col-12 col-xl-12 col-xxl-12">
           <!-- Reviews Start -->
-          <div class="card mb-5">
+          <div class="card ">
             <div class="card-body">
-              <div class="d-flex align-items-center pb-3 mt-3">
+              <div class="d-flex align-items-center pb-1 ">
                 <div class="row g-0 w-100">
-                  <div class="col-auto">
-                    <div class="sw-5 me-3">
-                      <img src="{{$service->image?url('/').'/images/offer/'.$service->image :'https://via.placeholder.com/100'}}" class="img-fluid rounded-xl" alt="thumb" />
-                    </div>
-                  </div>
-                  <div class="col pe-3">
-                    <div>{{$service->name}}</div>
-
-                    <div class="br-wrapper br-theme-cs-icon d-inline-block mb-2">
-
-                    </div>
+                  <div class="col pe-1">
+                    <div>{{$comment->user_name}}</div>
                     <div class="text-medium text-alternate lh-1-25">
-                      Chupa chups topping pastry halvah. Jelly cake jelly sesame snaps jelly beans jelly beans. Biscuit powder brownie powder sesame snaps
-                      jelly-o dragée cake. Pie tiramisu cake jelly lemon drops. Macaroon sugar plum apple pie carrot cake jelly beans chocolate.
+                        {{$comment->comment}}
                     </div>
                   </div>
                 </div>
@@ -75,6 +66,7 @@
           </div>
           <!-- Reviews End -->
         </div>
+        @endforeach
       </div>
       <!-- Content End -->
     </div>

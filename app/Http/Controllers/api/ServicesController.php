@@ -59,10 +59,6 @@ class ServicesController extends Controller
     public function test(Request $request)
     {
         $service = service::where('name', 'like', '%' . $request->name . '%')->first();
-        // $region = service::with('region')->find($service->id);
-
-        // return response()->json($region);
-        // $service = service::select('id', 'name', 'description', 'link', 'image', 'region_id')->find($id);
         if ($service) {
             $service->image = url('/') . '/images/offer/' . $service->image;
             $rates = Avg::where('service_id', $service->id)->first();
