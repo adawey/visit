@@ -64,7 +64,7 @@
                                                     </form>
                                                 </td>
                                                 <td>
-                                                    <a calss='btn btn-primary' href="{{ route('serviceId',$service->id)}}" > عرض </a>
+                                                    <a class='btn btn-primary' href="{{ route('serviceId',$service->id)}}" > عرض </a>
                                                 </td>
 
                                             </tr>
