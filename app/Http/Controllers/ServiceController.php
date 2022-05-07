@@ -26,6 +26,6 @@ class ServiceController extends Controller
         }
 
         $comments = $service->comments()->get();
-        return view('admin1.service.singlepage', compact('service', 'comments', 'rates'));
+        return view('admin.service.singlepage', compact('service', 'comments', 'rates'));
     }
 }

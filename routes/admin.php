@@ -3,8 +3,11 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AreaController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\adminController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\ComplaintsController;
+use App\Http\Controllers\SuggestionController;
 
 
 /*
@@ -46,9 +49,21 @@ Route::group(['prefix' => 'admin'], function () {
             Route::get('edit/{id}', [adminController::class, 'edit'])->name('edit_serve');
             Route::patch('update/{id}', [adminController::class, 'update'])->name('update_serve');
             Route::delete('store/destroy/{id}', [adminController::class, 'destroy'])->name('destroy_serve');
-            Route::get('complaints', [adminController::class, 'complaints'])->name('complaints');
-            Route::get('suggestions', [adminController::class, 'suggestions'])->name('suggestions');
             Route::get('/service/{id}', [ServiceController::class, 'getservocebyid'])->name('serviceId');
+        });
+        Route::group(['prefix' => 'Suggests'], function () {
+            Route::get('/', [SuggestionController::class, 'suggestions'])->name('suggestions');
+        });
+        Route::group(['prefix' => 'complaints'], function () {
+            Route::get('complaints', [ComplaintsController::class, 'complaints'])->name('complaints');
+        });
+        Route::group(['prefix' => 'users'], function () {
+            Route::get('/', [UserController::class, 'index'])->name('users');
+            Route::delete('/destroy/{id}', [UserController::class, 'destroy'])->name('destroyuser');
+            Route::delete('/{id}', [UserController::class, 'show'])->name('showuser');
+            Route::get('/create', [UserController::class, 'create'])->name('createuser');
+            Route::post('/store', [UserController::class, 'store'])->name('saveuser');
+
         });
     });
 });

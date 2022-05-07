@@ -1,4 +1,4 @@
-@extends('admin1.layout.layout')
+@extends('admin.layout.layout')
 
 @section('content')
     <main>
@@ -24,20 +24,24 @@
                 <!-- Right Side Start -->
                 <div class="col-12 col-xl-12 col-xxl-12">
                     <!-- Reviews Start -->
+                    @foreach ($complaints as $Complaint )
                     <div class="card ">
                         <div class="card-body">
                             <div class="d-flex align-items-center pb-1 ">
                                 <div class="row g-0 w-100">
                                     <div class="col pe-1">
-                                        {{-- <div>{{$comment->user_name}}</div> --}}
+                                        <h2>{{$Complaint->user_name }} </h2>
+                                        <h6>{{$Complaint->type }} </h6>
                                         <div class="text-medium text-alternate lh-1-25">
-                                            {{-- {{$comment->comment}} --}}
+                                        {{$Complaint->complaint }}
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    @endforeach
+
                     <!-- Reviews End -->
                 </div>
             </div>

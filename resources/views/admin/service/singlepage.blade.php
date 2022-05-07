@@ -1,4 +1,4 @@
-@extends('admin1.layout.layout')
+@extends('admin.layout.layout')
 
 @section('content')
 
@@ -6,7 +6,7 @@
     <div class="container mb-7">
       <div class="col">
         <div class="card h-100">
-          <div class="card-body text-center">
+          <div class="card-body text-center p-5" >
             <div class="sw-13 position-relative mb-3 mx-auto">
               <img src="{{$service->image?url('/').'/images/offer/'.$service->image :'https://via.placeholder.com/100'}}" class="img-fluid rounded-xl" alt="thumb" />
             </div>
@@ -23,7 +23,7 @@
                 </div>
             </div>
 
-            <div class="mb-3 text-muted sh-7">{{$service->description}}</div>
+            <div class="mb-3   sh-7" style='color:white'>{{$service->description}}</div>
 
           </div>
         </div>

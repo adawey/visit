@@ -15,7 +15,7 @@ class adminController extends Controller
     //
     public function check()
     {
-        return view('admin1.auth.login');
+        return view('admin.auth.login');
     }
 
     public function login(Request $request)
@@ -37,14 +37,13 @@ class adminController extends Controller
     {
         $services = DB::table('services')->get();
         $regions = DB::table('regions_lite')->get();
-
-        return view('admin1.service.index', compact('services', 'regions'));
+        return view('admin.service.index', compact('services', 'regions'));
     }
 
     public function create()
     {
         $regions = DB::table('regions_lite')->get();
-        return view('admin1.service.create', compact('regions'));
+        return view('admin.service.create', compact('regions'));
     }
 
     public function store(offerRequest $request)
@@ -62,7 +61,7 @@ class adminController extends Controller
     {
         $serve = service::find($id);
         $regions = DB::table('regions_lite')->get();
-        return view('admin1.service.edit', compact('serve', 'regions'));
+        return view('admin.service.edit', compact('serve', 'regions'));
     }
     public function update(Request $request, $id)
     {
@@ -79,18 +78,13 @@ class adminController extends Controller
 
 
     }
-    public function complaints(){
-        return view('admin1.service.complaintspage');
-    }
-    public function suggestions(){
-        return view('admin1.service.suggestionspage');
-    }
+
+
 
     public function destroy($id)
     {
         $service=Service::findOrFail($id);
         $this->deleteMedia($service->image, 'offer');
-        // service::destroy($id);
         $service->delete();
         return redirect()->route('start')->with('success',  'تم مسح العرض بنجاح  ');
     }

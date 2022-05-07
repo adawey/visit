@@ -121,6 +121,24 @@
                                 </li>
                             </ul>
                         </li>
+                        <li>
+                            <a href="#users" data-href="users.html">
+                                <i data-acorn-icon="notebook-1" class="icon" data-acorn-size="18"></i>
+                                <span class="label">المستخدمين </span>
+                            </a>
+                            <ul id="users">
+                                <li>
+                                    <a href="{{ route('users')}}">
+                                        <span class="label">عرض المستخدمين  </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('users')}}">
+                                        <span class="label">إضافة مستخدم </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
 
                         <li>
                             <a href="{{route('complaints')}}" >
