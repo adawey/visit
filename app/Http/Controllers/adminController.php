@@ -79,6 +79,12 @@ class adminController extends Controller
 
 
     }
+    public function complaints(){
+        return view('admin1.service.complaintspage');
+    }
+    public function suggestions(){
+        return view('admin1.service.suggestionspage');
+    }
 
     public function destroy($id)
     {

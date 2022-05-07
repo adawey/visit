@@ -122,6 +122,19 @@
                             </ul>
                         </li>
 
+                        <li>
+                            <a href="{{route('complaints')}}" >
+                                <i data-acorn-icon="online-class" class="icon" data-acorn-size="18"></i>
+                                <span class="label">الشكاوي</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{route('suggestions')}}"  >
+                                <i data-acorn-icon="quiz" class="icon" data-acorn-size="18"></i>
+                                <span class="label">الاقتراحات</span>
+                            </a>
+                        </li>
+
 
                         <li>
                             <a href="{{ url('admin/logout')}}">

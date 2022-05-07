@@ -46,6 +46,8 @@ Route::group(['prefix' => 'admin'], function () {
             Route::get('edit/{id}', [adminController::class, 'edit'])->name('edit_serve');
             Route::patch('update/{id}', [adminController::class, 'update'])->name('update_serve');
             Route::delete('store/destroy/{id}', [adminController::class, 'destroy'])->name('destroy_serve');
+            Route::get('complaints', [adminController::class, 'complaints'])->name('complaints');
+            Route::get('suggestions', [adminController::class, 'suggestions'])->name('suggestions');
             Route::get('/service/{id}', [ServiceController::class, 'getservocebyid'])->name('serviceId');
         });
     });
