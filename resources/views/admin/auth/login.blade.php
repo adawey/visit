@@ -19,10 +19,11 @@
   <!-- /.login-logo -->
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <a href="../../index2.html" class="h1"><b>Admin</b>LTE</a>
+        <h1><b>Admin</b> Visit KSA </h1>
+      {{--  <a href="../../index2.html" class="h1"><b>Admin</b> Visit KSA </a>  --}}
     </div>
     <div class="card-body">
-      <p class="login-box-msg">Sign in to start your session</p>
+      {{--  <p class="login-box-msg">Sign in to start your session</p>  --}}
 
       <form action="{{ route('adminlogin')}}" method="post">
         @csrf

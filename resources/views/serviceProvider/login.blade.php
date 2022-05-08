@@ -19,7 +19,8 @@
   <!-- /.login-logo -->
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <a href="../../index2.html" class="h1"><b>Service Provider </b>LTE</a>
+        <h1><b>Service Provider </b>Vist KSA</h1>
+      {{--  <a href="../../index2.html" class="h1"><b>Service Provider </b>Vist KSA</a>  --}}
     </div>
     <div class="card-body">
       <p class="login-box-msg">Sign in to start your session</p>

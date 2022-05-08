@@ -54,7 +54,7 @@ class adminController extends Controller
         $request['image'] = $imageName;
         // return $request;
         DB::table('services')->insert($request);
-        return redirect()->route('start')->with('success',  'تم انشاء العرض بنجاح  ');
+        return redirect()->route('users')->with('success',  'تم انشاء العرض بنجاح  ');
     }
 
     public function edit($id)

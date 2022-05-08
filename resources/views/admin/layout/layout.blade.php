@@ -133,7 +133,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('users')}}">
+                                    <a href="{{ route('create_user')}}">
                                         <span class="label">إضافة مستخدم </span>
                                     </a>
                                 </li>

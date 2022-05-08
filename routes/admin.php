@@ -30,7 +30,7 @@ use App\Http\Controllers\SuggestionController;
 // });
 
 Route::get('/adawe', function () {
-    return view('admin2.layout');
+    return view('admin.users.create');
 });
 Route::get('/adawe2', function () {
     return view('admin1.service.singlepage');
@@ -59,10 +59,11 @@ Route::group(['prefix' => 'admin'], function () {
         });
         Route::group(['prefix' => 'users'], function () {
             Route::get('/', [UserController::class, 'index'])->name('users');
+            Route::get('create', [UserController::class, 'create'])->name('create_user');
             Route::delete('/destroy/{id}', [UserController::class, 'destroy'])->name('destroyuser');
-            Route::delete('/{id}', [UserController::class, 'show'])->name('showuser');
-            Route::get('/create', [UserController::class, 'create'])->name('createuser');
-            Route::post('/store', [UserController::class, 'store'])->name('saveuser');
+            Route::get('/{id}', [UserController::class, 'show'])->name('show_user');
+
+            Route::post('/store', [UserController::class, 'store'])->name('save_user');
 
         });
     });
