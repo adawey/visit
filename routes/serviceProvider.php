@@ -28,6 +28,7 @@ Route::group(['prefix' => 'serviceprovider'], function () {
             Route::get('edit/{id}', [serviceProviderController::class, 'edit'])->name('edit_provider');
             Route::patch('update/{id}', [serviceProviderController::class, 'update'])->name('update_provider');
             Route::delete('destroy/{id}', [serviceProviderController::class, 'destroy'])->name('destroy_provider');
+            Route::get('/details/{id}', [serviceProviderController::class, 'getservicebyid'])->name('service_Id');
         });
         Route::group(['prefix' => 'area'], function () {
             Route::post('/getarea', [AreaController::class, 'getArea'])->name('getarea1');

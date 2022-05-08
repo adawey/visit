@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Avg;
 use App\service;
 use App\Http\traits\media;
 use Illuminate\Http\Request;
@@ -97,5 +98,18 @@ class serviceProviderController extends Controller
         $this->deleteMedia($oldImage, 'offer');
         service::destroy($id);
         return redirect()->route('start_provider')->with('success',  'تم مسح العرض بنجاح  ');
+    }
+    public function getservicebyid($id)
+    {
+        $service = service::find($id);
+        $rates = Avg::where('service_id', $service->id)->first();
+        if ($rates == null) {
+            $rates = 0;
+        } else {
+            $rates->avg = (int)($rates->avg);
+        }
+
+        $comments = $service->comments()->get();
+        return view('serviceProvider.service.singlepage', compact('service', 'comments', 'rates'));
     }
 }

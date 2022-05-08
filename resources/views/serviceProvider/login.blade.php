@@ -23,7 +23,7 @@
       {{--  <a href="../../index2.html" class="h1"><b>Service Provider </b>Vist KSA</a>  --}}
     </div>
     <div class="card-body">
-      <p class="login-box-msg">Sign in to start your session</p>
+      {{--  <p class="login-box-msg">Sign in to start your session</p>  --}}
 
       <form action="{{ route('login_provider')}}" method="post">
         @csrf
