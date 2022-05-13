@@ -3401,12 +3401,16 @@ html[data-radius=flat] {
 }
 
 @media (max-width: 767.98px) {
-     :root {
+    :root {
         --card-spacing: 1.75rem;
         --footer-size: 3rem;
         --main-spacing-horizontal: 1.25rem;
         --main-spacing-vertical: 1.25rem;
+        --nav-size: 12.8rem;
     }
+
+
+
 }
 
 
@@ -15031,7 +15035,8 @@ kbd {
 
 main {
     min-height: 100%;
-    padding-right: calc(var(--nav-size) + var(--main-spacing-horizontal));
+    /* padding-right: calc(var(--nav-size) + var(--main-spacing-horizontal)); */
+    padding-right: var(--main-spacing-horizontal);
     padding-left: var(--main-spacing-horizontal);
     padding-top: var(--main-spacing-vertical);
     padding-bottom: var(--main-spacing-vertical);
@@ -15811,19 +15816,6 @@ html[data-placement=vertical] .nav-container.mobile-side-ready .nav-content .men
     margin-right: 1rem;
 }
 
-html[data-placement=vertical] .nav-container .nav-content .menu-container .menu,
-html[data-placement=horizontal] .nav-container.mobile-side-ready .nav-content .menu-container .menu,
-html[data-placement=vertical] .nav-container.mobile-side-ready .nav-content .menu-container .menu {
-    width: 100%;
-    margin-left: 0;
-    margin-right: 0;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    cursor: pointer;
-    /* All li items - all of the items main and sub */
-    /* Only top level li items - main menu items */
-    /* Only sub level li items - sub menu items */
-}
 
 html[data-placement=vertical] .nav-container .nav-content .menu-container .menu ul,
 html[data-placement=horizontal] .nav-container.mobile-side-ready .nav-content .menu-container .menu ul,

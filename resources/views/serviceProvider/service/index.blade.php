@@ -20,8 +20,8 @@
                     @endif
                     </div>
                     <!-- /.card-header -->
-                    <div class="card-body">
-                        <table style="table-layout:fixed;width:100%;"  id="example1" class="table table-bordered table-striped">
+                    <div class="card-body"style="Overflow-x:auto;">
+                        <table style="table-layout:fixed;min-width: 600px;"  id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <th>الإسم</th>

@@ -6,12 +6,10 @@
 <section class="content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 ">
 
-                <!-- /.card -->
-
-                <div class="card">
-                    <div class="card-header">
+                <div class="card w-auto" >
+                    <div class="card-header ">
                         {{--  <h3 class="card-title">DataTable with default features</h3>  --}}
                         @if (session()->has('success'))
                         <div class="alert alert-success mt-5 " role="alert">
@@ -20,8 +18,8 @@
                     @endif
                     </div>
                     <!-- /.card-header -->
-                    <div class="card-body">
-                        <table style="table-layout:fixed;width:100%;" id="example1" class="table table-bordered table-striped">
+                    <div class="card-body "style="Overflow-x:auto;">
+                        <table style="table-layout:fixed;min-width: 600px;" id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <th>الإسم</th>
@@ -59,12 +57,17 @@
                                                     </form>
                                                 </td>
                                                 <td>
-                                                    <form method="get" action="{{route('edit_serve',$service->id)}}" enctype="multipart/form-data">
-                                                        <button type="submit" class="btn btn-success">تعديل</button>
-                                                    </form>
+                                                    <div>
+                                                        <form method="get" action="{{route('edit_serve',$service->id)}}" enctype="multipart/form-data">
+                                                            <button type="submit" class="btn btn-success">تعديل</button>
+                                                        </form>
+                                                    </div>
                                                 </td>
                                                 <td>
-                                                    <a class='btn btn-primary' href="{{ route('serviceId',$service->id)}}" > عرض </a>
+                                                    <div>
+                                                        <a class='btn btn-primary' href="{{ route('serviceId',$service->id)}}" > عرض </a>
+                                                    </div>
+
                                                 </td>
 
                                             </tr>
