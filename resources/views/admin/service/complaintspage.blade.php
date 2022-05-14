@@ -25,7 +25,7 @@
                 <div class="col-12 col-xl-12 col-xxl-12">
                     <!-- Reviews Start -->
                     @foreach ($complaints as $Complaint )
-                    <div class="card ">
+                    <div class="card mt-3">
                         <div class="card-body">
                             <div class="d-flex align-items-center pb-1 ">
                                 <div class="row g-0 w-100">
