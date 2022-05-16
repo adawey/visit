@@ -37,6 +37,7 @@ Route::group(['prefix' => 'users'], function () {
     Route::post('login', [UserController::class, 'Login']);
     Route::get('logout', [UserController::class, 'Logout']);
     Route::post('resetpassword', [UserController::class, 'resetPassword']);
+    Route::post('forgetpassword', [UserController::class, 'forgetpassword']);
 });
 Route::group(['prefix' => 'services'], function () {
     Route::get('/', [ServicesController::class, 'getServices']);

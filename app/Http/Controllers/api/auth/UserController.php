@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\api\auth;
 
 use App\User;
+use App\Mail\forgetpassword;
 use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\forgetassword;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\ValidationException;
 
 class UserController extends Controller
@@ -37,6 +39,21 @@ class UserController extends Controller
         $user->tokens()->delete();
         return response()->json(['msg' => 'logout done', 'status' => 'ok'], 200);
     }
+    public function forgetpassword(Request $request)
+    {
+        $email = $request->email;
+        $user = User::where('email', $email)->first();
+        if ($user) {
+            $code = rand(1000, 999999);
+            $user->code = $code;
+            $user->save();
+            $token = 'Bearer '  . $user->createToken($user->email)->plainTextToken;
+            Mail::to($user->email)->send(new forgetpassword($user->name, $user->code));
+            return response()->json(['token' => $token, 'data' => $user, 'status' => 'ok'], 200);
+        } else {
+            return response()->json(['data' => 'not found', 'status' => 'ok'], 200);
+        }
+    }
     public function resetPassword(forgetassword $request)
     {
         $token = $request->header('Authorization');
@@ -47,9 +64,10 @@ class UserController extends Controller
             $data['password'] = Hash::make($request->password);
             $user->password = $data['password'];
             $user->save();
+            $token = 'Bearer '  . $user->createToken($user->email)->plainTextToken;
         } else {
-            return response()->json(['user' => 'الكود غير متوافق ', 'status' => 'ok'], 403);
+            return response()->json(['data' => 'الكود غير متوافق ', 'status' => 'ok'], 200);
         }
-        return response()->json(['user' => $user, 'status' => 'ok'], 200);
+        return response()->json(['token' => $token, 'data' => $user, 'status' => 'ok'], 200);
     }
 }
