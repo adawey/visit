@@ -66,7 +66,7 @@ class UserController extends Controller
             $user->save();
             $token = 'Bearer '  . $user->createToken($user->email)->plainTextToken;
         } else {
-            return response()->json(['data' => 'الكود غير متوافق ', 'status' => 'ok'], 200);
+            return response()->json(['data' => 'الكود غير متوافق', 'status' => 'false'], 200);
         }
         return response()->json(['token' => $token, 'data' => $user, 'status' => 'ok'], 200);
     }
