@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\forgetassword;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
@@ -35,5 +36,20 @@ class UserController extends Controller
         $user =  User::find($AuthorizationUser->id);
         $user->tokens()->delete();
         return response()->json(['msg' => 'logout done', 'status' => 'ok'], 200);
+    }
+    public function resetPassword(forgetassword $request)
+    {
+        $token = $request->header('Authorization');
+        $AuthorizationUser = Auth::guard('sanctum')->user();
+        $user =  User::find($AuthorizationUser->id);
+        if ($user->code == $request->code) {
+            $data = $request->validated();
+            $data['password'] = Hash::make($request->password);
+            $user->password = $data['password'];
+            $user->save();
+        } else {
+            return response()->json(['user' => 'الكود غير متوافق ', 'status' => 'ok'], 403);
+        }
+        return response()->json(['user' => $user, 'status' => 'ok'], 200);
     }
 }

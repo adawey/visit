@@ -3,13 +3,16 @@
 namespace App\Http\Controllers\api;
 
 use App\User;
+use App\Mail\register;
+use App\Mail\forgetpassword;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class SendCodeController extends Controller
 {
-    public function SendCode(Request $request)
+    public function SendCode(Request $request, $status)
     {
 
         $token = $request->header('Authorization');
@@ -19,7 +22,12 @@ class SendCodeController extends Controller
         $user =  User::find($AuthorizationUser->id);
         $user->code = $code;
         $user->save();
-        return $user;
+        if ($status == 1) {
+            Mail::to($user->email)->send(new register($user->name, $user->code));
+        } else {
+            Mail::to($user->email)->send(new forgetpassword($user->name, $user->code));
+        }
+        return response()->json(['user' => $user, 'status' => 'ok'], 200);
     }
 
 

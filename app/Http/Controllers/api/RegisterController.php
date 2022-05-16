@@ -6,7 +6,10 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\RegisterRequest;
+
+use App\Mail\forgetpassword;
 
 class RegisterController extends Controller
 {
@@ -18,6 +21,5 @@ class RegisterController extends Controller
         $user = User::create($data);
         $token = 'Bearer ' . $user->createToken($request->email)->plainTextToken;
         return response()->json(['token' => $token,  'data' => $user, 'status' => 'ok'], 200);
-
     }   //sanctum    token => flatter
 }

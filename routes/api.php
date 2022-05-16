@@ -32,10 +32,11 @@ Route::group(['prefix' => 'users'], function () {
 
     // route register new user
     Route::post('register', [RegisterController::class, 'RegisterUser']);
-    Route::get('sendCode', [SendCodeController::class, 'SendCode']);
+    Route::get('sendCode/{status}', [SendCodeController::class, 'SendCode']);
     Route::post('verify', [SendCodeController::class, 'Verification']);
     Route::post('login', [UserController::class, 'Login']);
     Route::get('logout', [UserController::class, 'Logout']);
+    Route::post('resetpassword', [UserController::class, 'resetPassword']);
 });
 Route::group(['prefix' => 'services'], function () {
     Route::get('/', [ServicesController::class, 'getServices']);
