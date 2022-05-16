@@ -51,7 +51,7 @@ class UserController extends Controller
             Mail::to($user->email)->send(new forgetpassword($user->name, $user->code));
             return response()->json(['token' => $token, 'data' => $user, 'status' => 'ok'], 200);
         } else {
-            return response()->json(['data' => 'not found', 'status' => 'ok'], 200);
+            return response()->json(['data' => 'email not found', 'status' => 'ok'], 200);
         }
     }
     public function resetPassword(forgetassword $request)
