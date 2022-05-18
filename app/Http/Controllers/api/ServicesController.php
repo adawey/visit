@@ -12,6 +12,7 @@ use App\Http\Controllers\Controller;
 
 class ServicesController extends Controller
 {
+    private $cat;
 
     public function getServices()
     {
@@ -74,6 +75,24 @@ class ServicesController extends Controller
         } else {
             return response()->json(['msg' => 'service not found', 'status' => 'ok'], 200);
         }
+    }
+
+    public function getServicesByCat($cat)
+    {
+        $this->cat = $cat;
+        $services = DB::table('services')
+            ->join('regions_lite', function ($join) {
+                $join->on('regions_lite.id', '=', 'services.region_id')
+                    ->where('services.categorie', '=',  $this->cat);
+            })
+            ->join('rates', 'rates.service_id', '=', 'services.id')
+            ->select('services.*',  'regions_lite.name_ar as region', 'rates.rate')
+            ->get();
+
+        foreach ($services as $service) {
+            $service->image = url('/') . '/images/offer/' . $service->image;
+        }
+        return response()->json(['services' => $services], 200);
     }
 
 

@@ -44,7 +44,7 @@ Route::group(['prefix' => 'services'], function () {
     Route::post('/test', [ServicesController::class, 'test']);
     Route::get('/{id}', [ServicesController::class, 'getServicesById']);
     Route::post('/search', [ServicesController::class, 'searching']);
-
+    Route::get('/categorie/{cat}', [ServicesController::class, 'getServicesByCat']);
 });
 
 Route::middleware(['auth:sanctum'])->group(function () {
