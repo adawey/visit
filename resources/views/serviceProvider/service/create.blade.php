@@ -41,9 +41,9 @@
                                 <div class="form-group">
                                     <label class="form-label"> التصنيف  </label>
                                     <select name="categorie" id="categorie" class="form-control input-lg ">
-                                        <option value="1"> مطاعم  </option>
-                                        <option value="2"> فنادق  </option>
-                                        <option value="3"> اخرى  </option>
+                                        <option value="resturant"> مطاعم  </option>
+                                        <option value="hotels"> فنادق  </option>
+                                        <option value="other"> اخرى  </option>
                                     </select>
                                     @error('categorie')
                                         <div class="alert alert-danger mt-3">{{ $message }}</div>

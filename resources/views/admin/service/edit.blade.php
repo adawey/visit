@@ -59,9 +59,9 @@
                     <div class="form-group">
                         <label class="form-label"> التصنيف  </label>
                         <select name="categorie" id="categorie" class="form-control input-lg ">
-                            <option  @if($serve->categorie == 1) selected @endif  value="1"> مطاعم  </option>
-                            <option  @if($serve->categorie == 2) selected @endif  value="2"> فنادق  </option>
-                            <option  @if($serve->categorie == 3) selected @endif  value="3"> اخرى  </option>
+                            <option  @if($serve->categorie == 'resturant') selected @endif  value="resturant"> مطاعم  </option>
+                            <option  @if($serve->categorie == 'hotels' ) selected @endif  value="hotels"> فنادق  </option>
+                            <option  @if($serve->categorie == 'other') selected @endif  value="other"> اخرى  </option>
                         </select>
                         @error('categorie')
                             <div class="alert alert-danger mt-3">{{ $message }}</div>
