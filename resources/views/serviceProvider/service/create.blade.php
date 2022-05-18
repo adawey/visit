@@ -39,6 +39,17 @@
 
                                 </div>
                                 <div class="form-group">
+                                    <label class="form-label"> التصنيف  </label>
+                                    <select name="categorie" id="categorie" class="form-control input-lg ">
+                                        <option value="1"> مطاعم  </option>
+                                        <option value="2"> فنادق  </option>
+                                        <option value="3"> اخرى  </option>
+                                    </select>
+                                    @error('categorie')
+                                        <div class="alert alert-danger mt-3">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
                                     <label class="form-label"> اختر منطقة </label>
                                     <select name="region_id" id="regions" class="form-control input-lg dynamic"
                                         data-dependent="area">

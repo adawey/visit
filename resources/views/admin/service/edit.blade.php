@@ -57,6 +57,18 @@
                     </div>
                     <br />
                     <div class="form-group">
+                        <label class="form-label"> التصنيف  </label>
+                        <select name="categorie" id="categorie" class="form-control input-lg ">
+                            <option  @if($serve->categorie == 1) selected @endif  value="1"> مطاعم  </option>
+                            <option  @if($serve->categorie == 2) selected @endif  value="2"> فنادق  </option>
+                            <option  @if($serve->categorie == 3) selected @endif  value="3"> اخرى  </option>
+                        </select>
+                        @error('categorie')
+                            <div class="alert alert-danger mt-3">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <br />
+                    <div class="form-group">
                         <label for="link">الرابط</label>
                         <input type="text" name="link" class="form-control" id="link" value="{{$serve->link}}">
                         @error('link')

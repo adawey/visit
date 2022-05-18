@@ -15,29 +15,34 @@ class ServicesController extends Controller
 
     public function getServices()
     {
-        $services = service::select('id', 'name', 'description', 'link', 'image', 'region_id')->get();
-        if ($services->isEmpty()) {
-            return response()->json(['msg' => 'service empty', 'status' => 'ok'], 200);
-        }
-        $regions = DB::table('regions_lite')->get();
-        $rates = Avg::All();
+        $services = DB::table('services')
+        ->join('regions_lite', 'regions_lite.id', '=', 'services.region_id')
+        ->join('rates', 'rates.service_id', '=', 'services.id')
+        ->select('services.*',  'regions_lite.name_ar as region', 'rates.rate')
+        ->get();
+
         foreach ($services as $service) {
             $service->image = url('/') . '/images/offer/' . $service->image;
         }
-        return response()->json(['services' => $services, 'regions' => $regions,  'rates' => $rates,  'status' => 'ok'], 200);
+        return response()->json(['services' => $services], 200);
     }
     public function getServicesById($id)
     {
-        $service = service::select('id', 'name', 'description', 'link', 'image', 'region_id')->find($id);
+        $service = service::select('id', 'name', 'description', 'categorie', 'link', 'image', 'region_id')->find($id);
         if ($service) {
             $service->image = url('/') . '/images/offer/' . $service->image;
             $rates = Avg::where('service_id', $service->id)->first();
-            $rates->ratesum = (int)$rates->ratesum;
-            $rates->avg = floatval($rates->avg);
+            if ($rates) {
+                $rates->ratesum = (int)$rates->ratesum;
+                $rates->avg = floatval($rates->avg);
+                $service->rate =  $rates->avg;
+            }
             $region = DB::table('regions_lite')->where('id', $service->region_id)->first();
-            $service->location = $region->name_ar;
-            $service->rate = $rates;
-            return response()->json(['service' => $service, 'status' => 'ok', 'msg' => 'service found'], 200);
+            if ($region) {
+                $service->location = $region->name_ar;
+            }
+            $comments = $service->comments()->get();
+            return response()->json(['service' => $service, 'comments' => $comments, 'status' => 'ok', 'msg' => 'service found'], 200);
         } else {
             return response()->json(['msg' => 'service not found', 'status' => 'ok'], 200);
         }
