@@ -62,21 +62,6 @@ class ServicesController extends Controller
         }
     }
 
-    public function test(Request $request)
-    {
-        $service = service::where('name', 'like', '%' . $request->name . '%')->first();
-        if ($service) {
-            $service->image = url('/') . '/images/offer/' . $service->image;
-            $rates = Avg::where('service_id', $service->id)->first();
-            $region = DB::table('regions_lite')->where('id', $service->region_id)->first();
-            $service->location = $region->name_ar;
-            $service->rate = $rates;
-            return response()->json(['service' => $service, 'regions' => $region, 'rates' => $rates, 'status' => 'ok', 'msg' => 'service found'], 200);
-        } else {
-            return response()->json(['msg' => 'service not found', 'status' => 'ok'], 200);
-        }
-    }
-
     public function getServicesByCat($cat)
     {
         $this->cat = $cat;
