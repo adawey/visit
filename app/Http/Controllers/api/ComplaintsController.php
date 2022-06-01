@@ -14,7 +14,6 @@ class ComplaintsController extends Controller
     {
         $token = $request->header('Authorization');
         $AuthorizationUser = Auth::guard('sanctum')->user();
-        // return $token;
         $user =  User::find($AuthorizationUser->id);
         $suggest = Complaints::create([
             'type' => $request->type,
@@ -27,8 +26,6 @@ class ComplaintsController extends Controller
         } else {
             $msg = 'نعتذر ولكن هناك خطأ ما من فضلك حاول مره اخرى ';
         }
-
         return response()->json(['msg' => $msg, 'status' => 'ok']);
-
     }
 }

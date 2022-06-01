@@ -18,7 +18,6 @@ class CommentController extends Controller
 
         $token = $request->header('Authorization');
         $AuthorizationUser = Auth::guard('sanctum')->user();
-        // return $token;
         $user =  User::find($AuthorizationUser->id);
         $comment = Comment::create([
             'comment' => $request->comment,

@@ -15,7 +15,6 @@ class SugistionController extends Controller
     {
         $token = $request->header('Authorization');
         $AuthorizationUser = Auth::guard('sanctum')->user();
-        // return $token;
         $user =  User::find($AuthorizationUser->id);
         $suggest = Suggestion::create([
             'suggest' => $request->suggest,
@@ -27,7 +26,6 @@ class SugistionController extends Controller
         } else {
             $msg = 'نعتذر ولكن هناك خطأ ما من فضلك حاول مره اخرى ';
         }
-
         return response()->json(['msg' => $msg, 'status' => 'ok']);
     }
 }

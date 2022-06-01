@@ -51,7 +51,7 @@ class UserController extends Controller
             Mail::to($user->email)->send(new forgetpassword($user->name, $user->code));
             return response()->json(['token' => $token, 'data' => $user, 'status' => 'ok'], 200);
         } else {
-            return response()->json(['data' => 'email not found', 'status' => 'ok'], 200);
+            return response()->json(['data' => 'email not found', 'status' => 'ok'], 400);
         }
     }
     public function resetPassword(forgetassword $request)
@@ -64,10 +64,10 @@ class UserController extends Controller
             $data['password'] = Hash::make($request->password);
             $user->password = $data['password'];
             $user->save();
-            $token = 'Bearer '  . $user->createToken($user->email)->plainTextToken;
+
         } else {
-            return response()->json(['data' => 'الكود غير متوافق', 'status' => 'false'], 200);
+            return response()->json(['data' => 'الكود غير متوافق', 'status' => 'false'], 400);
         }
-        return response()->json(['token' => $token, 'data' => $user, 'status' => 'ok'], 200);
+        return response()->json(['data' => $user, 'status' => 'ok'], 200);
     }
 }

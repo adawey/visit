@@ -21,22 +21,6 @@ use App\Http\Controllers\SuggestionController;
 |
 */
 
-// Route::group(['middleware'=>'admin'],function () {
-//     // Route::get('/login', 'AdminPostsController');
-
-//     Route::get('/', function () {
-//         return 'admin';
-//     });
-// });
-
-Route::get('/adawe', function () {
-    return view('admin.users.create');
-});
-Route::get('/adawe2', function () {
-    return view('admin1.service.singlepage');
-});
-
-
 Route::group(['prefix' => 'admin'], function () {
     Route::get('check', [adminController::class, 'check']);
     Route::any('login', [adminController::class, 'login'])->name('adminlogin');
@@ -55,16 +39,14 @@ Route::group(['prefix' => 'admin'], function () {
             Route::get('/', [SuggestionController::class, 'suggestions'])->name('suggestions');
         });
         Route::group(['prefix' => 'complaints'], function () {
-            Route::get('complaints', [ComplaintsController::class, 'complaints'])->name('complaints');
+            Route::get('/', [ComplaintsController::class, 'complaints'])->name('complaints');
         });
         Route::group(['prefix' => 'users'], function () {
             Route::get('/', [UserController::class, 'index'])->name('users');
             Route::get('create', [UserController::class, 'create'])->name('create_user');
             Route::delete('/destroy/{id}', [UserController::class, 'destroy'])->name('destroyuser');
             Route::get('/{id}', [UserController::class, 'show'])->name('show_user');
-
             Route::post('/store', [UserController::class, 'store'])->name('save_user');
-
         });
     });
 });

@@ -18,13 +18,12 @@ class ServiceController extends Controller
     public function getservocebyid($id)
     {
         $service = service::find($id);
-        $rates = Avg::where('service_id', $service->id)->first();
+        $rates = Avg::where('service_id', '=', $service->id)->first();
         if ($rates == null) {
             $rates = 0;
         } else {
             $rates->avg = (int)($rates->avg);
         }
-
         $comments = $service->comments()->get();
         return view('admin.service.singlepage', compact('service', 'comments', 'rates'));
     }

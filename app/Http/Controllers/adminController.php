@@ -49,12 +49,10 @@ class adminController extends Controller
     public function store(offerRequest $request)
     {
         $imageName = $this->uploadMedia($request->image, 'offer');
-
         $request = $request->except('_token', 'image', 'page', '_method');
         $request['image'] = $imageName;
-        // return $request;
         DB::table('services')->insert($request);
-        return redirect()->route('users')->with('success',  'تم انشاء العرض بنجاح  ');
+        return redirect()->route('admin')->with('success',  'تم انشاء العرض بنجاح  ');
     }
 
     public function edit($id)
@@ -79,11 +77,9 @@ class adminController extends Controller
 
     }
 
-
-
     public function destroy($id)
     {
-        $service=Service::findOrFail($id);
+        $service = Service::find($id);
         $this->deleteMedia($service->image, 'offer');
         $service->delete();
         return redirect()->route('start')->with('success',  'تم مسح العرض بنجاح  ');

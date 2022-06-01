@@ -14,10 +14,6 @@ use Illuminate\Support\Facades\Http;
 class serviceProviderController extends Controller
 {
     use media;
-    //
-
-
-
     public function check()
     {
         return view('serviceProvider.login');
@@ -108,7 +104,6 @@ class serviceProviderController extends Controller
         } else {
             $rates->avg = (int)($rates->avg);
         }
-
         $comments = $service->comments()->get();
         return view('serviceProvider.service.singlepage', compact('service', 'comments', 'rates'));
     }

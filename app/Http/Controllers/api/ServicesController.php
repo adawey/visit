@@ -61,7 +61,6 @@ class ServicesController extends Controller
             return response()->json(['msg' => 'service not found', 'status' => 'ok'], 200);
         }
     }
-
     public function getServicesByCat($cat)
     {
         $this->cat = $cat;
@@ -79,8 +78,5 @@ class ServicesController extends Controller
         }
         return response()->json(['services' => $services], 200);
     }
-
-
-
 
 }

@@ -19,7 +19,7 @@ class UserController extends Controller
     }
     public function store(Request $request)
     {
-        $request = $request->except('_token', 'image', 'page', '_method');
+        $request = $request->except('_token',  'page', '_method');
         DB::table('users')->insert($request);
         return redirect()->route('users')->with('success',  'تم انشاء العرض بنجاح  ');
     }
